@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Solvers, Checkers & Generators | Global Tools</title>
+    <meta name="description" content="100% free online tools: password generator, word counter, QR code maker, and more. Fast, safe, no sign-up, works worldwide.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC0',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .tool-card {
+                @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 mb-6;
+            }
+            .btn {
+                @apply bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+            }
+            .input-field {
+                @apply w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-dark">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4 mb-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-primary">
+                        <i class="fa fa-cogs mr-2"></i> Global Free Tools
+                    </h1>
+                    <p class="text-gray-600 text-sm">Solvers • Checkers • Generators — 100% Free, No Sign-up</p>
+                </div>
+                <nav>
+                    <ul class="flex gap-6 text-sm font-medium">
+                        <li><a href="#" class="text-primary font-semibold">Home</a></li>
+                        <li><a href="#tools" class="hover:text-primary transition-colors">All Tools</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- Intro -->
+        <section class="text-center mb-12 max-w-3xl mx-auto">
+            <h2 class="text-[clamp(1.25rem,2.5vw,1.75rem)] font-semibold mb-3">Free Online Tools — For Everyone, Everywhere</h2>
+            <p class="text-gray-600">Simple, fast, and reliable tools you search for daily. No downloads, no registration, completely free. Works on mobile, tablet, and desktop.</p>
+            <!-- Ad Slot 1 - Reserved for AdSense -->
+            <div class="bg-light rounded-lg p-4 my-6 h-[90px] flex items-center justify-center text-gray-400 text-sm">
+                [ Ad Slot — Will Activate Later ]
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8 text-center">Popular Tools</h2>
+
+            <!-- TOOL 1: Password Generator -->
+            <div class="tool-card">
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fa fa-key text-secondary mr-2"></i> Password Generator
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">Create strong, secure, and random passwords instantly. Use for accounts, social media, banking, and more.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Password Length: <span id="lengthValue">12</span></label>
+                        <input type="range" id="passLength" min="6" max="32" value="12" class="w-full mb-4">
+                        
+                        <div class="space-y-2 mb-4">
+                            <label class="flex items-center gap-2 text-sm">
+                                <input type="checkbox" id="useUpper" checked class="accent-primary">
+                                Include Uppercase Letters (A-Z)
+                            </label>
+                            <label class="flex items-center gap-2 text-sm">
+                                <input type="checkbox" id="useLower" checked class="accent-primary">
+                                Include Lowercase Letters (a-z)
+                            </label>
+                            <label class="flex items-center gap-2 text-sm">
+                                <input type="checkbox" id="useNumbers" checked class="accent-primary">
+                                Include Numbers (0-9)
+                            </label>
+                            <label class="flex items-center gap-2 text-sm">
+                                <input type="checkbox" id="useSymbols" checked class="accent-primary">
+                                Include Symbols (!@#$%^&*)
+                            </label>
+                        </div>
+                        
+                        <button id="generateBtn" class="btn w-full">Generate Password</button>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Your Password:</label>
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" id="passwordResult" readonly class="input-field font-mono text-lg">
+                            <button id="copyPassBtn" class="bg-gray-200 hover:bg-gray-300 px-3 rounded-lg transition-colors" title="Copy">
+                                <i class="fa fa-copy"></i>
+                            </button>
+                        </div>
+                        <p id="passStrength" class="text-sm mt-2">Strength: <span class="font-medium text-green-600">Strong</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 2: Word & Character Counter -->
+            <div class="tool-card">
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fa fa-pencil text-secondary mr-2"></i> Word & Character Counter
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">Count words, characters, sentences, and paragraphs. Check length for essays, social media posts, articles, or messages.</p>
+                
+                <textarea id="textInput" rows="6" placeholder="Type or paste your text here..." class="input-field mb-4"></textarea>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-light p-3 rounded-lg">
+                        <div class="text-2xl font-bold text-primary" id="charCount">0</div>
+                        <div class="text-xs text-gray-600">Characters</div>
+                    </div>
+                    <div class="bg-light p-3 rounded-lg">
+                        <div class="text-2xl font-bold text-primary" id="wordCount">0</div>
+                        <div class="text-xs text-gray-600">Words</div>
+                    </div>
+                    <div class="bg-light p-3 rounded-lg">
+                        <div class="text-2xl font-bold text-primary" id="sentenceCount">0</div>
+                        <div class="text-xs text-gray-600">Sentences</div>
+                    </div>
+                    <div class="bg-light p-3 rounded-lg">
+                        <div class="text-2xl font-bold text-primary" id="paraCount">0</div>
+                        <div class="text-xs text-gray-600">Paragraphs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 3: QR Code Generator -->
+            <div class="tool-card">
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fa fa-qrcode text-secondary mr-2"></i> QR Code Generator
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">Create free QR codes for links, text, email, phone numbers, WiFi, or locations. Download as image or print.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Enter Content:</label>
+                        <textarea id="qrInput" rows="4" placeholder="https://example.com or any text..." class="input-field mb-4"></textarea>
+                        
+                        <label class="block text-sm font-medium mb-2">Size:</label>
+                        <select id="qrSize" class="input-field mb-4">
+                            <option value="150">Small (150x150)</option>
+                            <option value="250" selected>Medium (250x250)</option>
+                            <option value="350">Large (350x350)</option>
+                            <option value="450">Extra Large (450x450)</option>
+                        </select>
+                        
+                        <button id="generateQrBtn" class="btn w-full">Generate QR Code</button>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center bg-light rounded-lg p-4">
+                        <div id="qrResult" class="mb-4 w-[250px] h-[250px] flex items-center justify-center text-gray-400 text-center">
+                            QR code will appear here
+                        </div>
+                        <a id="downloadQrBtn" href="#" download="qrcode.png" class="btn text-sm hidden">
+                            <i class="fa fa-download mr-1"></i> Download QR Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Slot 2 - Reserved for AdSense -->
+            <div class="bg-light rounded-lg p-4 my-8 h-[250px] flex items-center justify-center text-gray-400 text-sm">
+                [ Ad Slot — Will Activate Later ]
+            </div>
+
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="max-w-3xl mx-auto mt-16 text-center">
+            <h2 class="text-2xl font-bold mb-4">About Global Free Tools</h2>
+            <p class="text-gray-600 text-sm">
+                We provide 100% free, fast, and easy-to-use online tools used by millions of people worldwide. 
+                Our goal: solve the problem you mentioned — people search for simple tools but can't find good, clean, ad-free ones. 
+                All tools work offline after load, respect your privacy, and never store your data.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>© 2026 Global Free Tools — All Rights Reserved | 100% Free Forever</p>
+            <p class="text-gray-400 text-xs mt-2">Privacy Policy | Terms of Service | Contact</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        // --------------------------
+        // 1. PASSWORD GENERATOR
+        // --------------------------
+        const lengthSlider = document.getElementById('passLength');
+        const lengthValue = document.getElementById('lengthValue');
+        const useUpper = document.getElementById('useUpper');
+        const useLower = document.getElementById('useLower');
+        const useNumbers = document.getElementById('useNumbers');
+        const useSymbols = document.getElementById('useSymbols');
+        const generateBtn = document.getElementById('generateBtn');
+        const passwordResult = document.getElementById('passwordResult');
+        const copyPassBtn = document.getElementById('copyPassBtn');
+        const passStrength = document.getElementById('passStrength');
+
+        lengthSlider.addEventListener('input', () => {
+            lengthValue.textContent = lengthSlider.value;
+        });
+
+        function generatePassword() {
+            const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lower = 'abcdefghijklmnopqrstuvwxyz';
+            const numbers = '0123456789';
+            const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+            
+            let chars = '';
+            let password = '';
+            
+            if (useUpper.checked) chars += upper;
+            if (useLower.checked) chars += lower;
+            if (useNumbers.checked) chars += numbers;
+            if (useSymbols.checked) chars += symbols;
+            
+            if (chars === '') {
+                passwordResult.value = 'Select at least one option';
+                passStrength.innerHTML = 'Strength: <span class="text-red-600">Error</span>';
+                return;
+            }
+            
+            // Generate password
+            for (let i = 0; i < lengthSlider.value; i++) {
+                const randomIndex = Math.floor(Math.random() * chars.length);
+                password += chars[randomIndex];
+            }
+            
+            passwordResult.value = password;
+            
+            // Calculate strength
+            let strength = 'Weak';
+            let color = 'text-red-600';
+            let score = 0;
+            if (lengthSlider.value >= 10) score++;
+            if (useUpper.checked) score++;
+            if (useLower.checked) score++;
+            if (useNumbers.checked) score++;
+            if (useSymbols.checked) score++;
+            
+            if (score >= 4) { strength = 'Very Strong'; color = 'text-green-600'; }
+            else if (score >= 3) { strength = 'Strong'; color = 'text-green-500'; }
+            else if (score >= 2) { strength = 'Medium'; color = 'text-yellow-600'; }
+            
+            passStrength.innerHTML = `Strength: <span class="${color} font-medium">${strength}</span>`;
+        }
+
+        generateBtn.addEventListener('click', generatePassword);
+        generatePassword(); // Initial generate
+
+        copyPassBtn.addEventListener('click', () => {
+            if (passwordResult.value && !passwordResult.value.includes('Select')) {
+                navigator.clipboard.writeText(passwordResult.value)
+                    .then(() => { copyPassBtn.innerHTML = '<i class="fa fa-check"></i>'; setTimeout(() => copyPassBtn.innerHTML = '<i class="fa fa-copy"></i>', 2000); });
+            }
+        });
+
+        // --------------------------
+        // 2. WORD & CHARACTER COUNTER
+        // --------------------------
+        const textInput = document.getElementById('textInput');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const sentenceCount = document.getElementById('sentenceCount');
+        const paraCount = document.getElementById('paraCount');
+
+        textInput.addEventListener('input', () => {
+            const text = textInput.value;
+            
+            // Characters
+            charCount.textContent = text.length;
+            
+            // Words
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            wordCount.textContent = words;
+            
+            // Sentences
+            const sentences = text.trim() ? text.split(/[.!?]+/).filter(s => s.trim() !== '').length : 0;
+            sentenceCount.textContent = sentences;
+            
+            // Paragraphs
+            const paras = text.trim() ? text.split(/\n\s*\n/).filter(p => p.trim() !== '').length : 1;
+            paraCount.textContent = paras;
+        });
+
+        // --------------------------
+        // 3. QR CODE GENERATOR
+        // --------------------------
+        const qrInput = document.getElementById('qrInput');
+        const qrSize = document.getElementById('qrSize');
+        const generateQrBtn = document.getElementById('generateQrBtn');
+        const qrResult = document.getElementById('qrResult');
+        const downloadQrBtn = document.getElementById('downloadQrBtn');
+
+        generateQrBtn.addEventListener('click', () => {
+            const text = qrInput.value.trim();
+            if (!text) { alert('Please enter content first!'); return; }
+            
+            const size = parseInt(qrSize.value);
+            qrResult.innerHTML = '';
+            
+            QRCode.toCanvas(document.createElement('canvas'), text, {
+                width: size,
+                height: size,
+                color: { dark: '#165DFF', light: '#FFFFFF' }
+            }, function (error, canvas) {
+                if (error) console.error(error);
+                qrResult.appendChild(canvas);
+                downloadQrBtn.href = canvas.toDataURL('image/png');
+                downloadQrBtn.classList.remove('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
